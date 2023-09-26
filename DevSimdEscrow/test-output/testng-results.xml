@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-09-26T16:33:02 IST" name="Default suite" finished-at="2023-09-26T16:35:15 IST" duration-ms="133138">
+    <groups>
+    </groups>
+    <test started-at="2023-09-26T16:33:02 IST" name="Default test" finished-at="2023-09-26T16:35:15 IST" duration-ms="133138">
+      <class name="testScript.CreditTransactionTest">
+        <test-method is-config="true" signature="classConfig()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:02 IST" name="classConfig" finished-at="2023-09-26T16:33:02 IST" duration-ms="390" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classConfig -->
+        <test-method is-config="true" signature="methodConfig()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:02 IST" name="methodConfig" finished-at="2023-09-26T16:33:04 IST" duration-ms="1947" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodConfig -->
+        <test-method signature="creditTransactionRecent()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:04 IST" name="creditTransactionRecent" finished-at="2023-09-26T16:33:29 IST" duration-ms="25512" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- creditTransactionRecent -->
+        <test-method is-config="true" signature="methodTearDown()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:29 IST" name="methodTearDown" finished-at="2023-09-26T16:33:30 IST" duration-ms="314" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodTearDown -->
+        <test-method is-config="true" signature="methodConfig()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:30 IST" name="methodConfig" finished-at="2023-09-26T16:33:31 IST" duration-ms="1057" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodConfig -->
+        <test-method signature="creditTransactionToday()[pri:1, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:31 IST" name="creditTransactionToday" finished-at="2023-09-26T16:33:39 IST" duration-ms="8302" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- creditTransactionToday -->
+        <test-method is-config="true" signature="methodTearDown()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:39 IST" name="methodTearDown" finished-at="2023-09-26T16:33:39 IST" duration-ms="350" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodTearDown -->
+        <test-method is-config="true" signature="methodConfig()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:39 IST" name="methodConfig" finished-at="2023-09-26T16:33:40 IST" duration-ms="1027" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodConfig -->
+        <test-method signature="creditTransactionYesterday()[pri:2, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:40 IST" name="creditTransactionYesterday" finished-at="2023-09-26T16:33:49 IST" duration-ms="8701" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- creditTransactionYesterday -->
+        <test-method is-config="true" signature="methodTearDown()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:49 IST" name="methodTearDown" finished-at="2023-09-26T16:33:49 IST" duration-ms="331" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodTearDown -->
+        <test-method is-config="true" signature="methodConfig()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:49 IST" name="methodConfig" finished-at="2023-09-26T16:33:51 IST" duration-ms="1038" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodConfig -->
+        <test-method signature="creditTransactionLast7Days()[pri:3, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:33:51 IST" name="creditTransactionLast7Days" finished-at="2023-09-26T16:34:02 IST" duration-ms="11107" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- creditTransactionLast7Days -->
+        <test-method is-config="true" signature="methodTearDown()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:34:02 IST" name="methodTearDown" finished-at="2023-09-26T16:34:02 IST" duration-ms="420" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodTearDown -->
+        <test-method is-config="true" signature="methodConfig()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:34:02 IST" name="methodConfig" finished-at="2023-09-26T16:34:03 IST" duration-ms="1114" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodConfig -->
+        <test-method signature="creditTransactionLast30Days()[pri:4, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:34:03 IST" name="creditTransactionLast30Days" finished-at="2023-09-26T16:34:20 IST" duration-ms="17089" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- creditTransactionLast30Days -->
+        <test-method is-config="true" signature="methodTearDown()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:34:20 IST" name="methodTearDown" finished-at="2023-09-26T16:34:21 IST" duration-ms="316" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodTearDown -->
+        <test-method is-config="true" signature="methodConfig()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:34:21 IST" name="methodConfig" finished-at="2023-09-26T16:34:22 IST" duration-ms="1028" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodConfig -->
+        <test-method signature="creditTransactionCustom()[pri:5, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:34:22 IST" name="creditTransactionCustom" finished-at="2023-09-26T16:35:14 IST" duration-ms="52789" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- creditTransactionCustom -->
+        <test-method is-config="true" signature="methodTearDown()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:35:14 IST" name="methodTearDown" finished-at="2023-09-26T16:35:15 IST" duration-ms="284" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- methodTearDown -->
+        <test-method is-config="true" signature="classTearDown()[pri:0, instance:testScript.CreditTransactionTest@793f29ff]" started-at="2023-09-26T16:35:15 IST" name="classTearDown" finished-at="2023-09-26T16:35:15 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classTearDown -->
+      </class> <!-- testScript.CreditTransactionTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
