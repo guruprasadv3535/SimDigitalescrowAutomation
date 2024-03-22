@@ -65,12 +65,32 @@ public class DebitTransactionTest extends BaseClass {
 		/*
 		 * Validating the Opening blc form transaction entries with opening blc tab
 		 */
-		List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-		String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
-		String actOpeningBlc = "";
-		for (int i = 0; i < actOpeningBlcArray.length; i++) {
-			actOpeningBlc += actOpeningBlcArray[i];
+		
+		String actOpeningBlc="";
+		if(allRows.size()==1) {
+			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			for (int i = 0; i < actOpeningBlcArray.length; i++) {
+				actOpeningBlc += actOpeningBlcArray[i];
+			}
+			
+			//fetch the credit amount to handle when there is only one txn
+			String[] debitAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+			String debitAmt="";
+			for (int i = 0; i < debitAmtArray.length; i++) {
+				debitAmt += debitAmtArray[i];
+			}
+			double openingBlc=Double.parseDouble(actOpeningBlc)+Double.parseDouble(debitAmt);
+			actOpeningBlc=Double.toString(openingBlc);
+			
+		} else {
+			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			for (int i = 0; i < actOpeningBlcArray.length; i++) {
+				actOpeningBlc += actOpeningBlcArray[i];
+			}
 		}
+		
 		String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
 		String expOpeningBlc = "";
 		for (int i = 0; i < expOpeningBlcArray.length; i++) {
@@ -177,7 +197,7 @@ public class DebitTransactionTest extends BaseClass {
 		/*
 		 * Validating the data range selected by fotter of entries
 		 */
-		assert1.assertTrue(transcationFilter.getFotterMessage().contains("from Today"));
+		assert1.assertTrue(transcationFilter.getFotterMessage().contains("Today"));
 
 		/*
 		 * Validating the start date and end date of today data range based on current
@@ -221,11 +241,30 @@ public class DebitTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
-			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			
+			String actOpeningBlc="";
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] debitAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String debitAmt="";
+				for (int i = 0; i < debitAmtArray.length; i++) {
+					debitAmt += debitAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)+Double.parseDouble(debitAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -422,11 +461,30 @@ public class DebitTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
-			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			
+			String actOpeningBlc="";
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] debitAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String debitAmt="";
+				for (int i = 0; i < debitAmtArray.length; i++) {
+					debitAmt += debitAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)+Double.parseDouble(debitAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -621,11 +679,30 @@ public class DebitTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
-			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			
+			String actOpeningBlc="";
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] debitAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String debitAmt="";
+				for (int i = 0; i < debitAmtArray.length; i++) {
+					debitAmt += debitAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)+Double.parseDouble(debitAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -829,11 +906,30 @@ public class DebitTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
-			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			
+			String actOpeningBlc="";
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] debitAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String debitAmt="";
+				for (int i = 0; i < debitAmtArray.length; i++) {
+					debitAmt += debitAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)+Double.parseDouble(debitAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -995,7 +1091,7 @@ public class DebitTransactionTest extends BaseClass {
 
 		List<WebElement> listOfYears = calendar.getAllTheYears();
 		String startYear = "2023";
-		String startMonth = "June";
+		String startMonth = "October";
 		String startDay = "1";
 		// to select the year
 		for (int i = 0; i < listOfYears.size(); i++) {
@@ -1025,14 +1121,17 @@ public class DebitTransactionTest extends BaseClass {
 				break;
 			}
 		}
+		//web.scrollToElement(calendar.clickOnCalendarOkButton());
+		//Thread.sleep(1000);
+		//calendar.clickOnCalendarOkButton().click();
 
 //		Selecting end date
 		Thread.sleep(2000);
 		transcationFilter.clickEndDateCalender();
 		calendar.clickOnYearDropdownButton();
 		String endYear = "2023";
-		String endMonth = "September";
-		String endDay = "1";
+		String endMonth = "November";
+		String endDay = "4";
 		// to select the year
 		for (int i = 0; i < listOfYears.size(); i++) {
 			if (listOfYears.get(i).getText().equals(endYear)) {
@@ -1059,6 +1158,11 @@ public class DebitTransactionTest extends BaseClass {
 				break;
 			}
 		}
+		//web.scrollToElement(calendar.clickOnCalendarOkButton());
+		//Thread.sleep(1000);
+		//calendar.clickOnCalendarOkButton().click();
+		//web.scrollToElement(home.toScrollTop());
+		//Thread.sleep(1000);
 		transcationFilter.clickApply();
 
 		/*
@@ -1097,11 +1201,30 @@ public class DebitTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
-			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			
+			String actOpeningBlc="";
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] debitAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String debitAmt="";
+				for (int i = 0; i < debitAmtArray.length; i++) {
+					debitAmt += debitAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)+Double.parseDouble(debitAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");

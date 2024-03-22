@@ -1,6 +1,7 @@
 package pom;
 
-import org.openqa.selenium.StaleElementReferenceException;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,8 +27,14 @@ public class HomePage {
 	@FindBy(xpath = "//span[text()='Select Escrow']/parent::label/parent::div/descendant::div[contains(@class,'MuiInputBase-root')]")
 	private WebElement escrowDropdown;
 
-	@FindBy(xpath = "//div[contains(@class,'MuiPopper-root')]/descendant::li[text()='escrow_name23']")
+	@FindBy(xpath = "(//div[contains(@class,'MuiPopper-root')]/descendant::li[text()='Alice Finserv DLB'])[2]")
 	private WebElement selectEscrow;
+	
+	@FindBy(xpath = "//div[contains(@class,'MuiPopper-root')]/descendant::li[text()='Vouch-Fee']")
+	private WebElement selectVouchFeeSubEscrow;
+	
+	@FindBy(xpath = "//div[contains(@class,'MuiPopper-root')]/descendant::li")
+	private List<WebElement> allSubEscrows;
 
 	@FindBy(xpath = "//div[contains(@class,'Mui-selected')]")
 	private WebElement transaction;
@@ -59,6 +66,9 @@ public class HomePage {
 	@FindBy(xpath = "(//div[text()='Account Details*']/ancestor::div[contains(@class,'css-1xwuabg')]/descendant::p[contains(@class,'css-j910gq')])[1]")
 	private WebElement accountNumber;
 
+	@FindBy(xpath = "//div[text()='Account Details*']")
+	private WebElement accoutnDetailsText;
+	
 	@FindBy(xpath = "(//div[text()='Account Details*']/ancestor::div[contains(@class,'css-1xwuabg')]/descendant::p[contains(@class,'css-j910gq')])[2]")
 	private WebElement ifscCode;
 	
@@ -111,6 +121,10 @@ public class HomePage {
 	}
 	public void selectEscrow() {
 		selectEscrow.click();
+	}
+	
+	public List<WebElement> allSubEscrowList() {
+		return allSubEscrows;
 	}
 	
 	/*
@@ -252,6 +266,10 @@ public class HomePage {
 	 */
 	public WebElement clickOnPayout() {
 		return payoutLink;
+	}
+	
+	public WebElement toScrollTop() {
+		return accoutnDetailsText;
 	}
 
 }

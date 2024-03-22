@@ -42,6 +42,8 @@ public class CalendarPopPage {
 	@FindBy(xpath = "//div[contains(@class,'MuiPickersCalendarHeader') and @aria-live='polite']/descendant::div[@class='MuiPickersCalendarHeader-label css-1v994a0']")
 	private WebElement getMonthSelectedInCalendar;
 	
+	@FindBy(xpath = "//button[text()='OK']")
+    private WebElement calendarOkButton;	
 //	 Initialization
 	
 	public CalendarPopPage(WebDriver driver) {
@@ -88,6 +90,10 @@ public class CalendarPopPage {
 	
 	public String getMonthSelectedInCalendar() {
 		return getMonthSelectedInCalendar.getText();
+	}
+	
+	public WebElement clickOnCalendarOkButton() {
+		return calendarOkButton;
 	}
 	
 }

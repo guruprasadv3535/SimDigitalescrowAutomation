@@ -1,5 +1,6 @@
 package testScript;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class CreditTransactionTest extends BaseClass {
 	public void creditTransactionRecent() throws InterruptedException {
 
 		SoftAssert assert1 = new SoftAssert();
+		DecimalFormat f1 = new DecimalFormat("#.##");
 		home.clickOnCreditTransaction();
 		home.clickOnCompanyDropdown();
 		home.selectCompany();
@@ -64,12 +66,31 @@ public class CreditTransactionTest extends BaseClass {
 		/*
 		 * Validating the Opening blc form transaction entries with opening blc tab
 		 */
-		List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-		String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
 		String actOpeningBlc = "";
-		for (int i = 0; i < actOpeningBlcArray.length; i++) {
-			actOpeningBlc += actOpeningBlcArray[i];
+		if(allRows.size()==1) {
+			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			for (int i = 0; i < actOpeningBlcArray.length; i++) {
+				actOpeningBlc += actOpeningBlcArray[i];
+			}
+			
+			//fetch the credit amount to handle when there is only one txn
+			String[] creditAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+			String creditAmt="";
+			for (int i = 0; i < creditAmtArray.length; i++) {
+				creditAmt += creditAmtArray[i];
+			}
+			double openingBlc=Double.parseDouble(actOpeningBlc)-Double.parseDouble(creditAmt);
+			actOpeningBlc=Double.toString(openingBlc);
+			
+		} else {
+			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			for (int i = 0; i < actOpeningBlcArray.length; i++) {
+				actOpeningBlc += actOpeningBlcArray[i];
+			}
 		}
+		
 		String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
 		String expOpeningBlc = "";
 		for (int i = 0; i < expOpeningBlcArray.length; i++) {
@@ -145,8 +166,8 @@ public class CreditTransactionTest extends BaseClass {
 		for (int i = 0; i < expCreditsArray.length; i++) {
 			expTotalCredits += expCreditsArray[i];
 		}
-		assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-		System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+		assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+		System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 		transcationFilter.swiftToFirstPage().click();
 		Thread.sleep(2000);
 
@@ -157,6 +178,7 @@ public class CreditTransactionTest extends BaseClass {
 	public void creditTransactionToday() throws InterruptedException {
 
 		SoftAssert assert1 = new SoftAssert();
+		DecimalFormat f1=new DecimalFormat("#.##");
 		home.clickOnCreditTransaction();
 		home.clickOnCompanyDropdown();
 		home.selectCompany();
@@ -218,13 +240,32 @@ public class CreditTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			
 			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] creditAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String creditAmt="";
+				for (int i = 0; i < creditAmtArray.length; i++) {
+					creditAmt += creditAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)-Double.parseDouble(creditAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
-
+			
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
 			String expOpeningBlc = "";
 			for (int i = 0; i < expOpeningBlcArray.length; i++) {
@@ -335,8 +376,8 @@ public class CreditTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -356,6 +397,7 @@ public class CreditTransactionTest extends BaseClass {
 	public void creditTransactionYesterday() throws InterruptedException {
 
 		SoftAssert assert1 = new SoftAssert();
+		DecimalFormat f1=new DecimalFormat("#.##");
 		home.clickOnCreditTransaction();
 		home.clickOnCompanyDropdown();
 		home.selectCompany();
@@ -418,11 +460,30 @@ public class CreditTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			
 			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] creditAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String creditAmt="";
+				for (int i = 0; i < creditAmtArray.length; i++) {
+					creditAmt += creditAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)-Double.parseDouble(creditAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -532,8 +593,8 @@ public class CreditTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -553,6 +614,7 @@ public class CreditTransactionTest extends BaseClass {
 	public void creditTransactionLast7Days() throws InterruptedException {
 
 		SoftAssert assert1 = new SoftAssert();
+		DecimalFormat f1=new DecimalFormat("#.##");
 		home.clickOnCreditTransaction();
 		home.clickOnCompanyDropdown();
 		home.selectCompany();
@@ -615,11 +677,30 @@ public class CreditTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			
 			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] creditAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String creditAmt="";
+				for (int i = 0; i < creditAmtArray.length; i++) {
+					creditAmt += creditAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)-Double.parseDouble(creditAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -737,8 +818,8 @@ public class CreditTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -758,6 +839,7 @@ public class CreditTransactionTest extends BaseClass {
 	public void creditTransactionLast30Days() throws InterruptedException {
 
 		SoftAssert assert1 = new SoftAssert();
+		DecimalFormat f1=new DecimalFormat("#.##");
 		home.clickOnCreditTransaction();
 		home.clickOnCompanyDropdown();
 		home.selectCompany();
@@ -820,11 +902,30 @@ public class CreditTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			
 			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] creditAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String creditAmt="";
+				for (int i = 0; i < creditAmtArray.length; i++) {
+					creditAmt += creditAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)-Double.parseDouble(creditAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -943,8 +1044,8 @@ public class CreditTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -964,6 +1065,7 @@ public class CreditTransactionTest extends BaseClass {
 	public void creditTransactionCustom() throws InterruptedException {
 
 		SoftAssert assert1 = new SoftAssert();
+		DecimalFormat f1=new DecimalFormat("#.##");
 		home.clickOnCreditTransaction();
 		home.clickOnCompanyDropdown();
 		home.selectCompany();
@@ -984,7 +1086,7 @@ public class CreditTransactionTest extends BaseClass {
 
 		List<WebElement> listOfYears = calendar.getAllTheYears();
 		String startYear = "2023";
-		String startMonth = "June";
+		String startMonth = "October";
 		String startDay = "1";
 		// to select the year
 		for (int i = 0; i < listOfYears.size(); i++) {
@@ -1013,14 +1115,17 @@ public class CreditTransactionTest extends BaseClass {
 				break;
 			}
 		}
+		//web.scrollToElement(calendar.clickOnCalendarOkButton());
+		//Thread.sleep(1000);
+		//calendar.clickOnCalendarOkButton().click();
 
 //		Selecting end date
 		Thread.sleep(2000);
 		transcationFilter.clickEndDateCalender();
 		calendar.clickOnYearDropdownButton();
 		String endYear = "2023";
-		String endMonth = "September";
-		String endDay = "1";
+		String endMonth = "November";
+		String endDay = "4";
 		// to select the year
 		for (int i = 0; i < listOfYears.size(); i++) {
 			if (listOfYears.get(i).getText().equals(endYear)) {
@@ -1047,6 +1152,11 @@ public class CreditTransactionTest extends BaseClass {
 				break;
 			}
 		}
+		//web.scrollToElement(calendar.clickOnCalendarOkButton());
+		//Thread.sleep(1000);
+		//calendar.clickOnCalendarOkButton().click();
+		//web.scrollToElement(home.toScrollTop());
+		//Thread.sleep(1000);
 		transcationFilter.clickApply();
 
 		/*
@@ -1085,11 +1195,30 @@ public class CreditTransactionTest extends BaseClass {
 		 */
 		if (!(transcationFilter.getNoRow().get(0).findElement(By.tagName("td")).getText()
 				.contains("no matching records found"))) {
-			List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
-			String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+			
 			String actOpeningBlc = "";
-			for (int i = 0; i < actOpeningBlcArray.length; i++) {
-				actOpeningBlc += actOpeningBlcArray[i];
+			if(allRows.size()==1) {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
+				
+				//fetch the credit amount to handle when there is only one txn
+				String[] creditAmtArray=columnsOfRow25.get(3).getText().split(" ")[1].split(",");
+				String creditAmt="";
+				for (int i = 0; i < creditAmtArray.length; i++) {
+					creditAmt += creditAmtArray[i];
+				}
+				double openingBlc=Double.parseDouble(actOpeningBlc)-Double.parseDouble(creditAmt);
+				actOpeningBlc=Double.toString(openingBlc);
+				
+			} else {
+				List<WebElement> columnsOfRow25 = allRows.get(allRows.size() - 1).findElements(By.tagName("td"));
+				String[] actOpeningBlcArray = columnsOfRow25.get(4).getText().split(" ")[1].split(",");
+				for (int i = 0; i < actOpeningBlcArray.length; i++) {
+					actOpeningBlc += actOpeningBlcArray[i];
+				}
 			}
 
 			String[] expOpeningBlcArray = home.getOpeningBlc().split(" ")[1].split(",");
@@ -1208,8 +1337,8 @@ public class CreditTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {

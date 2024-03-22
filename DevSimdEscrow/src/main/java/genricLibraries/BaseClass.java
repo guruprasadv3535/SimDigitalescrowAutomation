@@ -5,7 +5,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 
 import pom.CalendarPopPage;
 import pom.HomePage;
@@ -13,17 +12,6 @@ import pom.LoginPage;
 import pom.PayoutPage;
 import pom.PayoutSuccessfullPage;
 import pom.TranscationFiltersPage;
-
-//import genricLibraries.PropertiesUtility;
-//import genricLibraries.ExcelUtility;
-//import genricLibraries.PropertiesUtility;
-//import genricLibraries.WebDriverUtility;
-
-//import pom.ContactUsPage;
-//import pom.SeleniumTrainingPage;
-//import pom.SkillraryDemoAppPage;
-//import pom.SkillraryHomePage;
-//import pom.TestingPage;
 
 public class BaseClass {
 

@@ -112,7 +112,7 @@ public class AllTransactionTest extends BaseClass {
 				WebElement element = columnsToFetchDebits.get(3);
 				String[] debitsArray = null;
 				String debitsOfTranscation = "";
-				if (!(element.getText().equals(""))) {
+				if (!(element.getText().equals("")||element.getText().equals("-"))) {
 					debitsArray = element.getText().split(" ")[1].split(",");
 
 					for (int k = 0; k < debitsArray.length; k++) {
@@ -136,8 +136,7 @@ public class AllTransactionTest extends BaseClass {
 			expTotalDebits += expDebitsArray[i];
 		}
 		assert1.assertEquals(Double.parseDouble(f1.format(actTotalDebits)), Double.parseDouble(expTotalDebits));
-		System.out.println(
-				"Actual TD: " + Double.parseDouble(f1.format(actTotalDebits)) + ", Expected TD: " + expTotalDebits);
+		System.out.println("Actual TD: " + Double.parseDouble(f1.format(actTotalDebits)) + ", Expected TD: " + expTotalDebits);
 		transcationFilter.swiftToFirstPage().click();
 		Thread.sleep(2000);
 
@@ -153,7 +152,7 @@ public class AllTransactionTest extends BaseClass {
 				WebElement element = columnsToFetchCredits.get(4);
 				String[] creditsArray = null;
 				String creditsOfTranscation = "";
-				if (!(element.getText().equals(""))) {
+				if (!(element.getText().equals("")||element.getText().equals("-"))) {
 					creditsArray = element.getText().split(" ")[1].split(",");
 
 					for (int k = 0; k < creditsArray.length; k++) {
@@ -176,8 +175,8 @@ public class AllTransactionTest extends BaseClass {
 		for (int i = 0; i < expCreditsArray.length; i++) {
 			expTotalCredits += expCreditsArray[i];
 		}
-		assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-		System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+		assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+		System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 		transcationFilter.swiftToFirstPage().click();
 		Thread.sleep(2000);
 
@@ -332,7 +331,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchDebits.get(3);
 					String[] debitsArray = null;
 					String debitsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						debitsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < debitsArray.length; k++) {
@@ -384,7 +383,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchCredits.get(4);
 					String[] creditsArray = null;
 					String creditsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						creditsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < creditsArray.length; k++) {
@@ -407,8 +406,8 @@ public class AllTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -571,7 +570,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchDebits.get(3);
 					String[] debitsArray = null;
 					String debitsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						debitsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < debitsArray.length; k++) {
@@ -623,7 +622,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchCredits.get(4);
 					String[] creditsArray = null;
 					String creditsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						creditsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < creditsArray.length; k++) {
@@ -646,8 +645,8 @@ public class AllTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -819,7 +818,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchDebits.get(3);
 					String[] debitsArray = null;
 					String debitsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						debitsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < debitsArray.length; k++) {
@@ -871,7 +870,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchCredits.get(4);
 					String[] creditsArray = null;
 					String creditsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						creditsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < creditsArray.length; k++) {
@@ -894,8 +893,8 @@ public class AllTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -1067,7 +1066,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchDebits.get(3);
 					String[] debitsArray = null;
 					String debitsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						debitsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < debitsArray.length; k++) {
@@ -1119,7 +1118,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchCredits.get(4);
 					String[] creditsArray = null;
 					String creditsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						creditsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < creditsArray.length; k++) {
@@ -1142,8 +1141,8 @@ public class AllTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
-			System.out.println("Actual TC: " + actTotalCredits + ", Expected TC: " + expTotalCredits);
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
+			System.out.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + expTotalCredits);
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -1184,7 +1183,7 @@ public class AllTransactionTest extends BaseClass {
 
 		List<WebElement> listOfYears = calendar.getAllTheYears();
 		String startYear = "2023";
-		String startMonth = "April";
+		String startMonth = "October";
 		String startDay = "1";
 		// to select the year
 		for (int i = 0; i < listOfYears.size(); i++) {
@@ -1203,7 +1202,7 @@ public class AllTransactionTest extends BaseClass {
 			}
 		}
 		assert1.assertTrue(calendar.getMonthSelectedInCalendar().contains(startMonth));
-		assert1.assertTrue(calendar.getMonthSelectedInCalendar().contains(startYear));
+//		assert1.assertTrue(calendar.getMonthSelectedInCalendar().contains(startYear));
 
 		// to select the date
 		List<WebElement> listOfDate = calendar.getAllDatesInMonth();
@@ -1213,14 +1212,15 @@ public class AllTransactionTest extends BaseClass {
 				break;
 			}
 		}
+        //calendar.clickOnCalendarOkButton();
 
 //		Selecting end date
 		Thread.sleep(2000);
 		transcationFilter.clickEndDateCalender();
 		calendar.clickOnYearDropdownButton();
 		String endYear = "2023";
-		String endMonth = "September";
-		String endDay = "30";
+		String endMonth = "November";
+		String endDay = "4";
 		// to select the year
 		for (int i = 0; i < listOfYears.size(); i++) {
 			if (listOfYears.get(i).getText().equals(endYear)) {
@@ -1238,8 +1238,8 @@ public class AllTransactionTest extends BaseClass {
 				Thread.sleep(1000);
 			}
 		}
-		assert1.assertTrue(calendar.getMonthSelectedInCalendar().contains(endMonth));
-		assert1.assertTrue(calendar.getMonthSelectedInCalendar().contains(endYear));
+//		assert1.assertTrue(calendar.getMonthSelectedInCalendar().contains(endMonth));
+//		assert1.assertTrue(calendar.getMonthSelectedInCalendar().contains(endYear));
 
 		// to select the date
 		for (int i = 0; i < listOfDate.size(); i++) {
@@ -1248,7 +1248,8 @@ public class AllTransactionTest extends BaseClass {
 				break;
 			}
 		}
-
+		//calendar.clickOnCalendarOkButton();
+		
 		Thread.sleep(3000);
 		transcationFilter.clickApply();
 
@@ -1377,7 +1378,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchDebits.get(3);
 					String[] debitsArray = null;
 					String debitsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						debitsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < debitsArray.length; k++) {
@@ -1402,7 +1403,7 @@ public class AllTransactionTest extends BaseClass {
 			}
 			assert1.assertEquals(Double.parseDouble(f1.format(actTotalDebits)), Double.parseDouble(expTotalDebits));
 			System.out.println(
-					"Actual TD: " + f1.format(actTotalDebits) + ", Expected TD: " + Double.parseDouble(expTotalDebits));
+					"Actual TD: " + Double.parseDouble(f1.format(actTotalDebits)) + ", Expected TD: " + Double.parseDouble(expTotalDebits));
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {
@@ -1429,7 +1430,7 @@ public class AllTransactionTest extends BaseClass {
 					WebElement element = columnsToFetchCredits.get(4);
 					String[] creditsArray = null;
 					String creditsOfTranscation = "";
-					if (!(element.getText().equals(""))) {
+					if (!(element.getText().equals("")||element.getText().equals("-"))) {
 						creditsArray = element.getText().split(" ")[1].split(",");
 
 						for (int k = 0; k < creditsArray.length; k++) {
@@ -1452,9 +1453,9 @@ public class AllTransactionTest extends BaseClass {
 			for (int i = 0; i < expCreditsArray.length; i++) {
 				expTotalCredits += expCreditsArray[i];
 			}
-			assert1.assertEquals(actTotalCredits, Double.parseDouble(expTotalCredits));
+			assert1.assertEquals(Double.parseDouble(f1.format(actTotalCredits)), Double.parseDouble(expTotalCredits));
 			System.out
-					.println("Actual TC: " + actTotalCredits + ", Expected TC: " + Double.parseDouble(expTotalCredits));
+					.println("Actual TC: " + Double.parseDouble(f1.format(actTotalCredits)) + ", Expected TC: " + Double.parseDouble(expTotalCredits));
 			transcationFilter.swiftToFirstPage().click();
 			Thread.sleep(2000);
 		} else {

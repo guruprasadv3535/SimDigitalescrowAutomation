@@ -51,6 +51,7 @@ public class WebDriverUtility {
 	        chromeOptions.addArguments("user-data-dir=C:\\Users\\Guruprasad V\\AppData\\Local\\Google\\Chrome\\User Data" );
 	        chromeOptions.addArguments("--profile-directory=Profile 3");
 	        chromeOptions.addArguments("--remote-allow-origins=*");
+	       // chromeOptions.addArguments("--headless");
 			
 			driver = new ChromeDriver(chromeOptions);
 			break;

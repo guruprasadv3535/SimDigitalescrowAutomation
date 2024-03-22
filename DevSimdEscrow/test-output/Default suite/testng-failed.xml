@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScript.DebitTransactionTest">
+      <class name="testScript.AllTransactionTest">
         <methods>
           <include name="classConfig"/>
+          <include name="allTransactionCustom"/>
           <include name="methodConfig"/>
           <include name="classTearDown"/>
-          <include name="DebitTransactionCustom"/>
           <include name="methodTearDown"/>
         </methods>
-      </class> <!-- testScript.DebitTransactionTest -->
+      </class> <!-- testScript.AllTransactionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
