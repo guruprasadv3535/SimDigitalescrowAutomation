@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScript.AllTransactionTest">
+      <class name="testScript.SubEscrowFetchTest">
         <methods>
+          <include name="fetchSubEscrow"/>
           <include name="classConfig"/>
-          <include name="allTransactionCustom"/>
-          <include name="methodConfig"/>
           <include name="classTearDown"/>
+          <include name="methodConfig"/>
           <include name="methodTearDown"/>
         </methods>
-      </class> <!-- testScript.AllTransactionTest -->
+      </class> <!-- testScript.SubEscrowFetchTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

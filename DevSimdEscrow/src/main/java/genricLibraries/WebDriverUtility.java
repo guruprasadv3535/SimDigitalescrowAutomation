@@ -44,7 +44,7 @@ public class WebDriverUtility {
 
 		case "chrome":
 			
-			WebDriverManager.chromedriver().setup();
+//			WebDriverManager.chromedriver().setup();
 	       
 	        // Create ChromeOptions and set the profile path
 	        ChromeOptions chromeOptions = new ChromeOptions();

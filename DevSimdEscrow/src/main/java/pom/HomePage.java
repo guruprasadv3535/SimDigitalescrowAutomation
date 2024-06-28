@@ -21,7 +21,7 @@ public class HomePage {
 	@FindBy(xpath = "//label[text()='Select Company']/parent::div/descendant::div[@role='button']")
 	private WebElement companyDropdown;
 
-	@FindBy(xpath = "//div[contains(@class,'MuiMenu-paper')]/descendant::li[text()='AliceFin']")
+	@FindBy(xpath = "//div[contains(@class,'MuiMenu-paper')]/descendant::li[text()='UnlistedKart']")
 	private WebElement selectCompany;
 
 	@FindBy(xpath = "//span[text()='Select Escrow']/parent::label/parent::div/descendant::div[contains(@class,'MuiInputBase-root')]")
@@ -60,7 +60,7 @@ public class HomePage {
 	@FindBy(xpath = "//li[text()='Logout']")
 	private WebElement logOut;
 
-	@FindBy(xpath = "//p[text()='Available Balance']/parent::div/descendant::div[@style='color: rgb(0, 173, 79);']")
+	@FindBy(xpath = "//p[text()='Available Balance']/parent::div/descendant::p[contains(@class,'css-1y8yxka')]/div")
 	private WebElement availableBlc;
 	
 	@FindBy(xpath = "(//div[text()='Account Details*']/ancestor::div[contains(@class,'css-1xwuabg')]/descendant::p[contains(@class,'css-j910gq')])[1]")
@@ -86,6 +86,9 @@ public class HomePage {
 
 	@FindBy(xpath = "//p[text()='Payout']/ancestor::li/child::a")
 	private WebElement payoutLink;
+	
+	@FindBy(className = "css-1kyql4y")
+	private WebElement subEscrowNote;
 
 //	Initialization
 
@@ -270,6 +273,10 @@ public class HomePage {
 	
 	public WebElement toScrollTop() {
 		return accoutnDetailsText;
+	}
+	
+	public String getSubEscrowNote() {
+		return subEscrowNote.getText();
 	}
 
 }

@@ -99,7 +99,15 @@ public class ExcelUtility {
 	 * @param excelpath
 	 */
 	public void writeToExcel(String sheetName, int rowNum, int cellNum, String value, String excelpath) {
-		Cell cell = workbook.getSheet(sheetName).getRow(rowNum).createCell(cellNum);
+		Sheet sheet=workbook.getSheet(sheetName);
+		Cell cell=null;
+		try {
+			cell = sheet.getRow(rowNum).createCell(cellNum);
+		}catch(Exception e) {
+			sheet.createRow(rowNum);
+			cell = sheet.getRow(rowNum).createCell(cellNum);
+		}
+		
 		cell.setCellValue(value);
 		FileOutputStream fos = null;
 
